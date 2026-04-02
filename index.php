@@ -70,5 +70,28 @@
             </form>
         </div>
     </div>
+    <?php
+        if(isset($_GET['msg']) && isset($_GET['msg']) == 'success'){
+            echo '<p style="color:red">insert successfully</p>';
+        }
+    ?>
+    <table class="table">
+        <thead>
+             <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>Position</th>
+                <th>Hire_date</th>
+                <th>Is_active</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php include './Controllers/selectDB.php'?>
+        </tbody>
+    </table>
 </body>
 </html>

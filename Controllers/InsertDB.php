@@ -4,11 +4,11 @@ include '../database/connectDB.php';
 try {
 
     if (isset($_POST['saveBtn'])) {
-        $name = $_POST['name'];
-        $gender = $_POST['gender'];
-        $email = $_POST['email'];
+        $name = htmlspecialchars($_POST['name']);
+        $gender = htmlspecialchars($_POST['gender']);
+        $email = htmlspecialchars($_POST['email']);
         $dob = $_POST['dob'];
-        $position = $_POST['position'];
+        $position = htmlspecialchars($_POST['position']);
         $hire_date = $_POST['hire_date'];
 
         $insertDb = "INSERT INTO `employee_tb`
@@ -19,7 +19,7 @@ try {
 
         $result = $config->query($insertDb);
         if($result){
-            echo 'insert data success';
+            header('location: ../index.php?msg=success');
         }else{
             echo 'not found';
         }
