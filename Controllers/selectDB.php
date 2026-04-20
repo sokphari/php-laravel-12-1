@@ -19,7 +19,7 @@
                 <td><?php echo $row['is_active']?></td>
                 <td>
                     <a href="./Controllers/deleteDB.php?id=<?php echo $row['emp_id']?>" onclick="return confirm('Are you sure ?')" class="btn btn-danger">Delete</a>
-                    <a href="" class="btn btn-warning">Edit</a>
+                    <a href="./Controllers/editDB.php?id=<?php echo $row['emp_id']?>" class="btn btn-warning">Edit</a>
                 </td>
             </tr>
 <?php
