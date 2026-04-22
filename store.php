@@ -15,14 +15,15 @@ try {
     $des   = trim($_POST['des'] ?? '');
     $location = trim($_POST['location'] ?? '');
     $mood  = trim($_POST['mood'] ?? '');
-
+    
     $insertDB = "INSERT INTO `gellery_tb` 
     (`title`,`description`,`location`,`mood`)
     VALUES 
     ('$title','$des','$location','$mood') ";
 
     if ($conn->query($insertDB)) {
-        echo 'insert true';
+       header('location: index.php');
+       exit();
     } else {
         echo 'please check database';
     }
