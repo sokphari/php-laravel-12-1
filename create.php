@@ -8,7 +8,7 @@
 </head>
 <body class="bg-light">
     <div class="container shadow-lg mt-5 rounded py-5 px-5">
-        <form action="store.php" method="post">
+        <form action="store.php" enctype="multipart/form-data" method="post">
             <div class="mb-3">
                 <label for="" class="form-label">💬 Title*</label>
                 <input type="text" name="title" class="form-control" placeholder="enter titile">
@@ -29,8 +29,12 @@
                     <option value="happy">😃 Happy</option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="" class="form-label">📸 Image</label>
+                <input type="file" name="image" class="form-control">
+            </div>
             <div class="d-flex justify-content-between py-3">
-                <button class="btn btn-danger" type="reset">😣 Concal</button>
+                <button class="btn btn-danger" type="reset">😣 Cancel</button>
                 <button class="btn btn-primary" type="submit">#️⃣ Save</button>
             </div>
         </form>

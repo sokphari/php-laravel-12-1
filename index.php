@@ -66,7 +66,7 @@
                 <div class="card-body d-flex flex-column">
 
                     <!-- Title -->
-                    <h5 class="card-title"><?= htmlspecialchars($row['title']) ?></h5> // script
+                    <h5 class="card-title"><?= htmlspecialchars($row['title']) ?></h5>
 
                     <!-- Description -->
                     <p class="card-text text-muted">
