@@ -8,6 +8,7 @@
 </head>
 <body class="bg-light">
     <div class="container shadow-lg mt-5 rounded py-5 px-5">
+        <!-- file text number -->
         <form action="store.php" enctype="multipart/form-data" method="post">
             <div class="mb-3">
                 <label for="" class="form-label">💬 Title*</label>

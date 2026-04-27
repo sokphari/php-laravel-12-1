@@ -82,8 +82,10 @@
                     <!-- Buttons -->
                     <div class="mt-auto d-flex justify-content-between">
                         <a href="edit.php?id=<?= $row['id'] ?>" class="btn btn-outline-primary btn-sm">Edit</a>
-                        <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-outline-danger btn-sm">Delete</a>
+                        <a href="delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are yoou sure to delete it')" class="btn btn-outline-danger btn-sm">Delete</a>
                     </div>
+
+                    
 
                 </div>
             </div>
