@@ -17,6 +17,23 @@
                 + Add Customer
             </button>
         </div>
+        <table class="table table-hover mt-5">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>NAME</th>
+                    <th>GENDER</th>
+                    <th>CONTACT</th>
+                    <th>SALARY</th>
+                    <th>EMAIL</th>
+                    <th>PASSWORD</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="tableCustomer">
+
+            </tbody>
+        </table>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -27,8 +44,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
-                        <input type="hidden" name="id" id="id>
+                    <form id="customerForm">
+                        <input type="hidden" name="id" id="id">
                         <div class="mb-3">
                             <label for="">✒️ Name*</label>
                             <input class="form-control" type="text" name="name" id="name" placeholder="Entet Name">
@@ -70,13 +87,16 @@
             $("#AddUser").click(function(){
                 $("#modelTitle").text("Add User")
                 $("#id").val('')
-                $("#name").val('123')
+                $("#name").val('')
                 $("#gender").val('')
                 $("#contact").val('')
                 $("#salary").val('')
                 $("#email").val('')
                 $("#password").val('')
             })
+            $("#customerForm").on("submit", function(event){
+                event.preventDefault();
+            });
             $("#BtnSave").click(function(){
                 // get value from form
                 // let name = document.getElementById("name").value
@@ -105,12 +125,26 @@
                     success: function (response) {
                         if(response.trim() === 'success'){
                             alert("Insert Data right now success")
+                            loadData()
                         }else{
                             alert("insert fails")
                         }
                     }
                 });
             })
+            function loadData(){
+                $.ajax({
+                    type: "GET",
+                    url: "getData.php",
+                    success: function (response) {
+                        $("#tableCustomer").html(response)
+                    }
+                });
+            }
+            loadData();
         })
     </script>
 </html>
+
+
+
