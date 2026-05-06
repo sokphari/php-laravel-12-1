@@ -24,16 +24,8 @@
 <body>
     <div class="container">
         <div class="form shadow">
-            <h4 class="text-center">Form Register</h4>
+            <h4 class="text-center">Form Login</h4>
             <form action="../Controller/AuthController.php" method="post">
-                <div class="form-group mb-3">
-                    <label for="">Name</label>
-                    <input type="text" name="name" class="form-control" id="">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="">Gender</label>
-                    <input type="text" name="gender" class="form-control" id="">
-                </div>
                 <div class="form-group mb-3">
                     <label for="">Email</label>
                     <input type="email" name="email" class="form-control" id="">
@@ -43,7 +35,7 @@
                     <input type="password" name="password" class="form-control" id="">
                 </div>
                 <div class="form-group mb-3">
-                    <button type="submit" name="register"  class="btn mt-2 form-control text-light btn-warning">Register</button>
+                    <button type="submit" name="login"  class="btn mt-2 form-control text-light btn-warning">Register</button>
                 </div>
             </form>
         </div>
