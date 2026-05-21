@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//public route
 Route::get('/',[CustomerController::class,'index'])->name('index.get');
 Route::controller(CustomerController::class)->group(function(){
     Route::get('/customers/create', 'create')->name('create.get');
     Route::post('/customer/store','store')->name('store.post');
+    Route::delete('/customer/{id}','destroy')->name('destroy.delete');
+    Route::get('/customer/{id}','edit')->name('edit.get');
 });

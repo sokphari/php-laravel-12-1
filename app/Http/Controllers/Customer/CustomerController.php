@@ -41,5 +41,15 @@ class CustomerController extends Controller
         return redirect()->route('index.get')->with('success','Customer Created Successfully');
         
     }
+    public function destroy(int $id){
+        $customer = Customer::findOrfail($id);
+        $customer->delete();
+        return redirect()->route('index.get')->with('success','Customer Deleted Successfully');
+    }
+    public function edit(int $id){
+        $customer = Customer::findOrfail($id);
+        return view('customers.edit',compact('customer'));
+    }
+    
 }
 
