@@ -1,0 +1,17 @@
+tb categories
+id smallint
+name varchar
+
+
+tb products
+id smallint
+name varchar
+price decimal
+stock decimal
+img varchar
+
+categories
+ 1 food 2.drink
+
+1 coca cola 1.50 100 image 2
+2 rice checkit 2.50 30 image 1
