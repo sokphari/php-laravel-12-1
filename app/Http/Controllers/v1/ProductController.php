@@ -15,6 +15,6 @@ class ProductController extends Controller
             'price' => 'required|decimal',
             'stock' => 'required|integer',
             'image' => 'required|nullable|image|mime:jpg,png,jpeg|max:2048'
-        ]);git 
+        ]); 
     }
 }
