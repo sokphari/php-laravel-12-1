@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/',function(){
-    return view('products.create');
-});
+Route::get('/', [ProductController::class, 'create']);
 Route::prefix('suplier')->controller(CategoryController::class)->group(function(){
     Route::post('/create','store')->name('store.post');
     Route::get('/create/list','create')->name('store.get');
@@ -30,6 +28,6 @@ Route::prefix('suplier')->controller(CategoryController::class)->group(function(
 
 });
 Route::prefix('admin')->controller(ProductController::class)->group(function(){
-    Route::post('/create','store')->name('store.post');
+    Route::post('/create','store')->name('store1.post');
     Route::get('/create/form','create')->name('create.get');
 });

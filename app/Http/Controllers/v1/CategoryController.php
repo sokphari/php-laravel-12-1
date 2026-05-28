@@ -5,7 +5,6 @@ namespace App\Http\Controllers\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;   
 
 class CategoryController extends Controller
 {
@@ -18,12 +17,14 @@ class CategoryController extends Controller
         return view('categories.create');
     }
     public function store(Request $request){
-        $validate = Validator::make($request->all(),[
+        $validated = $request->validate([
             'name' => "required|string|max:30|unique:categories,name"
         ]);
+
         Category::create([
-            'name' => $request->name
+            'name' => $validated['name']
         ]);
+
         return redirect()->route('index.get');
     }
 }

@@ -10,33 +10,43 @@
 <body>
     <div class="container">
         <h1>Create Product</h1>
-        <form action="{{route('store.post')}}" enctype="multipart/form-data" method="POST">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                {{ $errors->first() }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        <form action="{{route('store1.post')}}" enctype="multipart/form-data" method="POST">
             @csrf
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="number" class="form-control" id="price" name="price" step="0.01" required>
-            </div>
             <div>
-                <select name="" id="">
+                <select name="category_id" id="category_id" class="form-control" required>
                     <option value="">Select Category</option>
-                    @foreach ($products as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}" @selected(old('category_id') == $category->id)>{{$category->name}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}" required>
+            </div>
+            <div class="form-group">
                 <label for="stock">Stock</label>
-                <input type="number" class="form-control" id="stock" name="stock" step="1" required>
+                <input type="number" class="form-control" id="stock" name="stock" step="1" value="{{ old('stock') }}" required>
             </div>
             <div class="form-group">
                 <label for="image">Image</label>
                 <input type="file" class="form-control" id="image" name="image">
             </div>
-            <div clsass="form-group">
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </div>
         </form>
