@@ -30,4 +30,6 @@ Route::prefix('suplier')->controller(CategoryController::class)->group(function(
 Route::prefix('admin')->controller(ProductController::class)->group(function(){
     Route::post('/create','store')->name('store1.post');
     Route::get('/create/form','create')->name('create.get');
+    Route::get('/index','index')->name('index.get');
+    Route::delete('/delete/{id}','destroy')->name('destroy.delete');
 });

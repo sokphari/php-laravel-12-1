@@ -9,12 +9,15 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function index(){
+        $products = Product::latest()->paginate(5);
+        return view('products.index',compact('products'));
+    }
     public function create()
     {
         $categories = Category::all();
         return view('products.create', compact('categories'));
     }
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -33,5 +36,10 @@ class ProductController extends Controller
         Product::create($validated);
 
         return redirect()->back()->with('success', 'Product created successfully.');
+    }
+    public function destroy($id){
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return to_route('index.get');
     }
 }
