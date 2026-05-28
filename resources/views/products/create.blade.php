@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Create Product</h1>
-        <form action="" enctype="multipart/form-data" method="POST">
+        <form action="{{route('store.post')}}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>
@@ -19,6 +19,14 @@
             <div class="form-group">
                 <label for="price">Price</label>
                 <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+            </div>
+            <div>
+                <select name="" id="">
+                    <option value="">Select Category</option>
+                    @foreach ($products as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="stock">Stock</label>

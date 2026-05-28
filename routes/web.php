@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\v1\CategoryController;
+use App\Http\Controllers\v1\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +22,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
     return view('products.create');
+});
+Route::prefix('suplier')->controller(CategoryController::class)->group(function(){
+    Route::post('/create','store')->name('store.post');
+    Route::get('/create/list','create')->name('store.get');
+    Route::get('/list','index')->name('index.get');
+
+});
+Route::prefix('admin')->controller(ProductController::class)->group(function(){
+    Route::post('/create','store')->name('store.post');
+    Route::get('/create/form','create')->name('create.get');
 });

@@ -10,11 +10,11 @@
 <body>
     <div class="container">
         <h1>Create Category</h1>
-        <form action="" method="POST">
+        <form action="{{route('store.post')}}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" name="name" required>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
