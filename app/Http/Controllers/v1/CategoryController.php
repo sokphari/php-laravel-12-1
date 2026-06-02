@@ -25,6 +25,6 @@ class CategoryController extends Controller
             'name' => $validated['name']
         ]);
 
-        return redirect()->route('index.get');
+        return redirect()->route('suppliers.index');
     }
 }

@@ -141,6 +141,8 @@
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Are you sure you want to delete this product?')" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
+                                    
+                                    <a href="{{ route('edit.get', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                 </td>
 
                             </tr>
