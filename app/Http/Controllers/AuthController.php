@@ -31,6 +31,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
     public function storeLogin(Request $request){
+        // try{}
         $validate = $request->validate([
             'email' => ['required','email'],
             'password' => ['required','min:6']
@@ -53,6 +54,6 @@ class AuthController extends Controller
             if($user->role == 'customer'){
                 return redirect()->route('customer');
             }
-            return redirect()->route('user');
+            return redirect('user');
     }
 }

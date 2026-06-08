@@ -21,14 +21,33 @@ Route::get('register',[AuthController::class,'register']);
 Route::post('register',[AuthController::class,'storeRegister'])->name('register.post');
 Route::get('login',[AuthController::class,'login']);
 Route::post('login',[AuthController::class,'storeLogin'])->name('login.post');
+// Route::middleware(['auth','role:user'])->group(function(){
+//     Route::get('/user',function(){
+//         return "welcome to use dashboard";
+//     })->name('user');
+// });
 
-
-Route::get('/user',function(){
-    return 'user';
-})->name('user');
-Route::get('/admin',function(){
-    return 'admin';
-})->name('admin');
-Route::get('/customer',function(){
-    return 'customer';
-})->name('customer');
+// Route::get('/user',function(){
+//     return 'user';
+// })->middleware(['auth','role:user']);
+Route::middleware(['auth','role:user,admin'])->group(function(){
+    Route::get('/user',function(){
+        return "welcome to dashboard user";
+    });
+});
+Route::middleware(['auth','role:customer,admin'])->group(function(){
+    Route::get('/customer',function(){
+        return "welcome to dashboard customer";
+    });
+});
+Route::middleware(['auth','role:admin'])->group(function(){
+    Route::get('/admin',function(){
+        return "welcome to dashboard admin";
+    });
+});
+// Route::get('/admin',function(){
+//     return 'admin';
+// })->name('admin');
+// Route::get('/customer',function(){
+//     return 'customer';
+// })->name('customer');
