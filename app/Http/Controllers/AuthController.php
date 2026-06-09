@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
@@ -54,6 +55,17 @@ class AuthController extends Controller
             if($user->role == 'customer'){
                 return redirect()->route('customer');
             }
-            return redirect('user');
+            return redirect('dashboard');
+    }
+    public function logout(Request $request){
+        Auth::logout(); // logout current user
+
+        $request->session()->invalidate(); // clear session data and regenerate session id
+        $request->session()->regenerateToken(); // regenerate CSRF/XSRF token
+
+        Cookie::queue(Cookie::forget(config('session.cookie')));
+        Cookie::queue(Cookie::forget('XSRF-TOKEN'));
+
+        return redirect()->route('login');
     }
 }
