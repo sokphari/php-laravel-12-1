@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\StudentController;
+use App\Http\Controllers\auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
@@ -13,7 +14,11 @@ Route::controller(StudentController::class)->group(function(){
     Route::delete('/student/{student}','destroy');
     Route::put('/student/{student}','update');
     // Route::match(['put','patch'],'/student/{student}','update');
-
-    
 });
+
+
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
+
+
 ?>
