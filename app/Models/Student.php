@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $fillable = [
-        'name',
+        'users_id',
+        'name'
+        ,
         'gender',
         'email',
         'password'
@@ -15,4 +17,7 @@ class Student extends Model
     protected $hidden = [
         'password' // %&2sdfghghgjgsddf = 123456
     ];
+    public function users(){
+        return $this->belongsTo(User::class,'users_id','id');
+    }
 }
