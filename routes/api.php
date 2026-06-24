@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',function(){
     return 'welcome';
 });
-Route::controller(StudentController::class)->group(function(){
+Route::middleware(['auth:sanctum'])->controller(StudentController::class)->group(function(){
     Route::get('/student','index');
     Route::post('/student','store');
     Route::get('/student/{student}','show');
@@ -17,8 +17,8 @@ Route::controller(StudentController::class)->group(function(){
 });
 
 
-Route::post('/register',[AuthController::class,'register']);
-Route::post('/login',[AuthController::class,'login']);
+Route::post('/register',[AuthController::class,'StoreRegister']);
+Route::post('/login',[AuthController::class,'StoreLogin']);
 
 
 ?>
