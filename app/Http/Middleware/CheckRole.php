@@ -16,19 +16,22 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next , string ...$roles): Response
     {
-        // user not authentication
-        if(!Auth::check()){
+        $user = $request->user(); //current login
+
+        if (!$user) {
             return response()->json([
-                'message' => 'Unauthentication'
-            ],401);
+                'message' => 'Unauthenticated'
+            ], 401);
         }
-        // check role
-        if(!in_array(Auth::user()->roles,  $roles)){
+
+        $roleName = optional($user->roles)->roles_name;
+
+        if (!$roleName || !in_array($roleName, $roles, true)) {
             return response()->json([
-                'message' => 'User not have Permission ',
-            ],403);
+                'message' => 'User does not have permission',
+            ], 403);
         }
-        //allow access 
+
         return $next($request);
     }
 }

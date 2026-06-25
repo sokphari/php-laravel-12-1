@@ -33,15 +33,18 @@ class AuthController extends Controller
     public function StoreLogin(LoginRequest $request){
         try{
             $data = $request->validated();
-            $user = User::where('email',$request['email'])->first();
-            // check user
-            if(!$user || !Hash::check($request->password,$user->password)){
+            $user = User::where('email', $data['email'])
+                ->where('roles_id', $data['roles_id'])
+                ->first();
+
+            if (!$user || !Hash::check($data['password'], $user->password)) {
                 return response()->json([
                     'status' => false,
-                    'msg'    => 'User Dont Have Permission',
-                ],403);
+                    'msg'    => 'Invalid credentials or role',
+                ], 403);
             }
-            $token = $user->CreateToken('api-token')->plainTextToken;
+
+            $token = $user->createToken('api-token')->plainTextToken; // create key for user login use route api
 
             return response()->json([
                 'status' => true,
